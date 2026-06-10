@@ -53,12 +53,15 @@ pipeline {
                 bat 'docker build --tag %WEB_IMAGE% frontend'
             }
         }
+
+        stage('Archive') {
+            steps {
+                archiveArtifacts artifacts: 'frontend/dist/**', fingerprint: true
+            }
+        }
     }
 
     post {
-        success {
-            archiveArtifacts artifacts: 'frontend/dist/**', fingerprint: true
-        }
         always {
             deleteDir()
         }
