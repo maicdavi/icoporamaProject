@@ -1,0 +1,28 @@
+<main class="login">
+  <section class="login__panel" aria-labelledby="login-title">
+    <p class="login__eyebrow">Icoporama</p>
+    <h1 id="login-title">Iniciar sesion</h1>
+
+    <form
+      class="login__form"
+      (submit)="$event.preventDefault(); login(username.value, password.value)"
+    >
+      <label for="username">Usuario</label>
+      <input id="username" #username name="username" type="text" value="admin" autocomplete="username" />
+
+      <label for="password">Clave</label>
+      <input
+        id="password"
+        #password
+        name="password"
+        type="password"
+        value="admin123"
+        autocomplete="current-password"
+      />
+
+      <p class="login__error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+      <button type="submit">Entrar</button>
+    </form>
+  </section>
+</main>
